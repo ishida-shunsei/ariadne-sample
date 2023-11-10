@@ -24,3 +24,7 @@ Base = declarative_base()
 
 def get_db_session():
     return _scoped_session()
+
+def new_db_session():
+    _scoped_session.remove()
+    return _scoped_session()
