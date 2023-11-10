@@ -1,0 +1,52 @@
+scalar Datetime
+
+type Query {
+    users(id: Int = null, name: String = null): [User]!
+
+    departments(id: Int = null, name: String = null): [Department]!
+
+    employees(id: Int = null, name: String = null, hiredOn: Datetime = null): [Employee]!
+}
+
+type Mutation {
+    createUser(input: UserInput!): User
+
+    updateUser(id: Int!, input: UserInput!): User
+
+    deleteUser(id: Int!): Boolean!
+
+    createEmployee(input: EmployeeInput!): Employee
+
+    updateEmployee(id: Int!, input: EmployeeInput!): Employee
+
+    deleteEmployee(id: Int!): Boolean!
+}
+
+type User {
+    id: Int!
+    name: String!
+    lastName: String!
+}
+
+input UserInput {
+    name: String!
+    lastName: String!
+}
+
+type Department {
+    id: Int!
+    name: String!
+}
+
+type Employee {
+    id: Int!
+    name: String!
+    hiredOn: Datetime
+    department: Department!
+}
+
+input EmployeeInput {
+    name: String!
+    hiredOn: Datetime
+    departmentId: Int!
+}

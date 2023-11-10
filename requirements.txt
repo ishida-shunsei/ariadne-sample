@@ -1,0 +1,11 @@
+python-dateutil
+ariadne
+uvicorn
+starlette
+sqlalchemy
+alembic
+factory_boy
+aiosqlite
+
+pytest
+httpx
