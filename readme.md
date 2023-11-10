@@ -1,6 +1,9 @@
 # Ariadne + Starlette + SQLAlchemy の GraphQL API サンプル
 
 ## セットアップ
+
+Python 3.10 以上の環境を推奨
+
 ```bash
 # Python仮想環境を作成
 python -m venv .venv
@@ -18,6 +21,11 @@ python ./fixture_master.py
 ```bash
 uvicorn asgi:app
 ```
+
+GET http://localhost:8000/graphql -> GraphQL playground の表示
+
+POST http://localhost:8000/graphql -> APIの実行
+
 
 ## ベタープラクティス
 UpdateのMutationを実行するとき、変更対象の項目ではなくても必須項目は都度入力させる縛りを設けたほうがよさそう。
