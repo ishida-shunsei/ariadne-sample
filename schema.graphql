@@ -26,6 +26,8 @@ type User {
     id: Int!
     name: String!
     lastName: String!
+    created_at: Datetime!
+    updated_at: Datetime!
 }
 
 input UserInput {
@@ -36,17 +38,27 @@ input UserInput {
 type Department {
     id: Int!
     name: String!
+    place: String
+    manager: String
+    created_at: Datetime!
+    updated_at: Datetime!
 }
 
 type Employee {
     id: Int!
     name: String!
-    hiredOn: Datetime
     department: Department!
+    hiredOn: Datetime
+    role: String
+    residence: String
+    created_at: Datetime!
+    updated_at: Datetime!
 }
 
 input EmployeeInput {
     name: String!
-    hiredOn: Datetime
     departmentId: Int!
+    hiredOn: Datetime
+    role: String
+    residence: String
 }

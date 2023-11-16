@@ -7,6 +7,7 @@ from starlette.routing import Route, WebSocketRoute
 
 from app.database import database_for_lifespan
 from app.schema import schema_for_asgi
+from app.logging import logging
 
 
 graphql_app = GraphQL(

@@ -12,5 +12,7 @@ class Department(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50), nullable=False)
+    place = Column(String(50), nullable=False)
+    manager = Column(String(50), nullable=False)
     created_at = gen_created_at_column()
     updated_at = gen_updated_at_column()

@@ -1,8 +1,8 @@
 """init
 
-Revision ID: 20231109_1346
+Revision ID: 20231116_1157
 Revises: 
-Create Date: 2023-11-09 13:48:50.344800
+Create Date: 2023-11-16 12:12:46.546478
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '20231109_1346'
+revision: str = '20231116_1157'
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -23,19 +23,29 @@ def upgrade() -> None:
     op.create_table('department',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
+    sa.Column('place', sa.String(length=50), nullable=False),
+    sa.Column('manager', sa.String(length=50), nullable=False),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=True),
     sa.Column('last_name', sa.String(), nullable=True),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('employee',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(), nullable=True),
+    sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('hired_on', sa.DateTime(), nullable=True),
     sa.Column('department_id', sa.Integer(), nullable=True),
+    sa.Column('role', sa.String(length=50), nullable=False),
+    sa.Column('residence', sa.String(length=50), nullable=True),
+    sa.Column('created_at', sa.DateTime(timezone=True), nullable=False),
+    sa.Column('updated_at', sa.DateTime(timezone=True), nullable=False),
     sa.ForeignKeyConstraint(['department_id'], ['department.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

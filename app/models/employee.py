@@ -15,7 +15,7 @@ class Employee(Base):
     __tablename__ = 'employee'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    name = Column(String(50), nullable=False)
     hired_on = Column(DateTime, default=gen_utc_now)
     department_id = Column(Integer, ForeignKey('department.id'))
     department = relationship(
@@ -26,5 +26,7 @@ class Employee(Base):
             cascade='delete,all',
         )
     )
+    role = Column(String(50), nullable=False)
+    residence = Column(String(50))
     created_at = gen_created_at_column()
     updated_at = gen_updated_at_column()
